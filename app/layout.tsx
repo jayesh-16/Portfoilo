@@ -13,9 +13,24 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Personal Portfolio",
+  title: "Jayesh | Full-Stack Developer",
+  icons: "/favicon.png",
   description: "My personal portfolio website showcasing my projects and skills",
-    generator: 'v0.dev'
+  openGraph: {
+    title: "Personal Portfolio",
+    description: "My personal portfolio website showcasing my projects and skills",
+    url: "https://jayesh-aboutme.vercel.app/",
+    type: "website",
+    images: [
+      {
+        url: "/th.png",
+        width: 1200,
+        height: 630,
+        alt: "Personal Portfolio Preview",
+      },
+    ],
+  },
+    
 }
 
 export default function RootLayout({
