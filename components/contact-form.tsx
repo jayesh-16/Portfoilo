@@ -1,52 +1,39 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useActionState } from "react"
+import { sendContactForm } from "../actions/contact"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Loader2 } from "lucide-react"
+import { Loader2, CheckCircle, AlertCircle } from "lucide-react"
 
 export function ContactForm() {
+  const [state, formAction, isPending] = useActionState(sendContactForm, null)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formStatus, setFormStatus] = useState<{
-    success?: boolean
-    message?: string
-  } | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    setFormStatus({
-      success: true,
-      message: "Your message has been sent! I will get back to you soon.",
-    })
-
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    })
-
-    setIsSubmitting(false)
-  }
+  useEffect(() => {
+    if (state?.success) {
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      })
+    }
+  }, [state])
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form action={formAction} className="space-y-6">
       <div className="space-y-2">
         <label htmlFor="name" className="block text-sm font-medium text-gray-300">
           Name
@@ -97,20 +84,28 @@ export function ContactForm() {
 
       <Button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isPending}
         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 ease-in-out"
       >
-        {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mr-2" /> : "Send Message"}
+        {isPending ? <Loader2 className="h-5 w-5 animate-spin mr-2" /> : "Send Message"}
       </Button>
 
-      {formStatus && (
+      {state && (
         <div
-          className={`p-4 rounded-lg ${formStatus.success ? "bg-green-900/20 border border-green-800" : "bg-red-900/20 border border-red-800"}`}
+          className={`p-4 rounded-lg ${state.success ? "bg-green-900/20 border border-green-800" : "bg-red-900/20 border border-red-800"}`}
         >
-          <p className={formStatus.success ? "text-green-400" : "text-red-400"}>{formStatus.message}</p>
+          <div className="flex items-center">
+            {state.success ? (
+              <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+            ) : (
+              <AlertCircle className="h-5 w-5 text-red-500 mr-2" />
+            )}
+            <p className={state.success ? "text-green-400" : "text-red-400"}>{state.message}</p>
+          </div>
         </div>
       )}
     </form>
   )
 }
+
 
