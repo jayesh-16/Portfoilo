@@ -27,6 +27,8 @@ export async function sendContactForm(prevState: any, formData: FormData) {
     // For demo purposes, we'll just simulate a successful submission
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
+    console.log("Form submitted:", { name, email, message })
+
     return {
       success: true,
       message: "Your message has been sent! I will get back to you soon.",
