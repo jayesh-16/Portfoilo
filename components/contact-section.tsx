@@ -3,9 +3,10 @@
 import { motion } from "framer-motion"
 import { ContactForm } from "./contact-form"
 import { SocialIcon } from "./social-icon"
-import { Github } from "lucide-react"
+import { XIcon } from "./icons/x-icon"
 import { InstagramIcon } from "./icons/instagram-icon"
 import { LinkedInIcon } from "./icons/linkedin-icon"
+import { GithubIcon } from "./icons/github-icon"
 
 export function ContactSection() {
   return (
@@ -29,25 +30,29 @@ export function ContactSection() {
             <div className="space-y-6">
               <div>
                 <h4 className="text-gray-300 font-medium mb-2">Email</h4>
-                <a href="mailto:john@example.com" className="text-blue-400 hover:text-blue-300 transition-colors">
+                <a href="mailto:jayeshdhore@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors">
                   jayeshdhore@gmail.com
                 </a>
               </div>
               <div>
                 <h4 className="text-gray-300 font-medium mb-2">Location</h4>
-                <p className="text-white">Mumbai,India</p>
+                <p className="text-white">Mumbai, India</p>
               </div>
               <div>
                 <h4 className="text-gray-300 font-medium mb-2">Social Media</h4>
                 <div className="flex space-x-4 mt-2">
-                  <SocialIcon href="https://github.com/jayesh-16" aria-label="GitHub" icon={<Github className="w-5 h-5" />} />
                   <SocialIcon
-                    href="https://www.linkedin.com/in/jayesh-dhore-a5a869289"
+                    href="https://github.com/jayesh-16"
+                    aria-label="GitHub"
+                    icon={<GithubIcon className="w-5 h-5" />}
+                  />
+                  <SocialIcon
+                    href="https://linkedin.com"
                     aria-label="LinkedIn"
                     icon={<LinkedInIcon className="w-5 h-5" />}
                   />
                   <SocialIcon
-                    href="https://www.instagram.com/dhore_jayesh"
+                    href="https://instagram.com"
                     aria-label="Instagram"
                     icon={<InstagramIcon className="w-5 h-5" />}
                   />
@@ -65,4 +70,5 @@ export function ContactSection() {
     </section>
   )
 }
+
 
