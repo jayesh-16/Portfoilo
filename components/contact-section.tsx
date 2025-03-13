@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { ContactForm } from "./contact-form"
 import { SocialIcon } from "./social-icon"
-import { XIcon } from "./icons/x-icon"
 import { InstagramIcon } from "./icons/instagram-icon"
 import { LinkedInIcon } from "./icons/linkedin-icon"
 import { GithubIcon } from "./icons/github-icon"
