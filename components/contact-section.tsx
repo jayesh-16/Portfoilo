@@ -47,12 +47,12 @@ export function ContactSection() {
                     icon={<GithubIcon className="w-5 h-5" />}
                   />
                   <SocialIcon
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/jayesh-dhore-a5a869289"
                     aria-label="LinkedIn"
                     icon={<LinkedInIcon className="w-5 h-5" />}
                   />
                   <SocialIcon
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/dhore_jayesh"
                     aria-label="Instagram"
                     icon={<InstagramIcon className="w-5 h-5" />}
                   />
