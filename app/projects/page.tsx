@@ -26,7 +26,7 @@ const projects: Project[] = [
     image: "2.png",
     technologies: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS"],
     // No demo URL as it's still in development
-    repoUrl: "https://github.com/jayesh-16/Attendence-Management",
+    repoUrl: "https://github.com/jayesh-16/Attedence-Management-Final",
   },
   {
     id: "project-2",
@@ -174,7 +174,7 @@ export default function ProjectsPage() {
                         <span>Live Demo</span>
                       </a>
                     ) : (
-                      <span className="text-amber-400 text-sm italic">In Development</span>
+                      <span className="text-amber-400 text-sm italic">Private App</span>
                     )}
                   </CardFooter>
                 </Card>
